@@ -16,6 +16,7 @@ $ cd agcd-csiro
 
 The historical precipitation data (1900-2016) can be replicated by running the following on Petrichor:
 ```
+$ module load cdo
 $ bash transfer_agcd-historical_precip.sh {csiro_username} {nci_username} {nci_password}
 ```
 
