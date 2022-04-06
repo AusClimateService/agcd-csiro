@@ -46,15 +46,24 @@ def main(args):
     """Run the command line program."""
 
     in_ds = xr.open_dataset(args.infile)
+    in_ds['lat'].attrs['standard_name'] = 'latitude'
+    in_ds['lon'].attrs['standard_name'] = 'longitude'
+    try:
+        in_ds = in_ds.drop('crs')
+    except ValueError:
+        pass
+    try:
+        in_ds[args.var].attrs.pop('grid_mapping')
+    except KeyError:
+        pass
 
     for outfile in args.outfiles:
+        print(outfile)
         start_time, end_time = parse_date_range(outfile)
         out_ds = in_ds.sel(time=slice(start_time, end_time))
         out_ds = out_ds.compute()
         out_ds = out_ds.drop_duplicates('time')
         duplicate_time_check(out_ds['time'])
-        out_ds['lat'].attrs['standard_name'] = 'latitude'
-        out_ds['lon'].attrs['standard_name'] = 'longitude'
         out_ds.attrs['history'] = cmdprov.new_log(
             infile_logs={args.infile: in_ds.attrs['history']})
         out_ds.to_netcdf(outfile)
@@ -64,6 +73,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__,
                                      formatter_class=argparse.RawDescriptionHelpFormatter)        
     parser.add_argument("infile", type=str, help="Input file")
+    parser.add_argument("var", type=str, help="Variable")
     parser.add_argument("outfiles", nargs='*', type=str,
                         help="Output file in {var}_AGCD-CSIRO_{grid}_YYYYMMDD-YYYYMMDD_{timescale}.nc")
     args = parser.parse_args()
