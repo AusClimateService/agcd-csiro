@@ -53,6 +53,8 @@ def main(args):
         out_ds = out_ds.compute()
         out_ds = out_ds.drop_duplicates('time')
         duplicate_time_check(out_ds['time'])
+        out_ds['lat'].attrs['standard_name'] = 'latitude'
+        out_ds['lon'].attrs['standard_name'] = 'longitude'
         out_ds.attrs['history'] = cmdprov.new_log(
             infile_logs={args.infile: in_ds.attrs['history']})
         out_ds.to_netcdf(outfile)
