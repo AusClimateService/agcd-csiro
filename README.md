@@ -20,7 +20,7 @@ $ bash transfer_agcd-historical.sh {variable} {nci_username} {nci_password}
 
 The latest data (updated daily) can be transferred using scp. e.g.
 ```
-$ scp /datasets/work/af-cdp/work/agcd/climate/tmax.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
+$ scp /datasets/work/af-cdp/work/agcd/climate/tmax.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
 ```
 
 ### Data processing
@@ -33,6 +33,6 @@ These issues can be addressed by running the processing script on NCI:
 ```
 $ cd /g/data/xv83/agcd-csiro/replica-code
 $ git pull origin main
-$ python process_current.py /g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc tmax /g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20190101-20191231_daily.nc /g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20200101-20201231_daily.nc /g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20210101-20211231_daily.nc /g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20220101-20220402_daily.nc
-$ rm /g/data/xv83/agcd-csiro/tmax/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
+$ python process_current.py /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc tmax /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20190101-20191231_daily.nc /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20200101-20201231_daily.nc /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20210101-20211231_daily.nc /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20220101-20220402_daily.nc
+$ rm /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
 ```
