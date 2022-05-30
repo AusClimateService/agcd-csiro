@@ -1,6 +1,6 @@
-# Transfer historical AGCD data from Petricor to Gadi
+# Transfer daily historical AGCD data from Petricor to Gadi
 #
-# Usage: $ bash transfer_agcd-historical.sh {variable} {nci_username} {nci_password}
+# Usage: $ bash transfer_agcd-historical_daily.sh {variable} {nci_username} {nci_password}
 
 variable=$1
 nci_username=$2

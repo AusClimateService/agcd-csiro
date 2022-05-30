@@ -6,11 +6,13 @@ The commercially licensed AGCD dataset is located at `/datasets/work/af-cdp/work
 (The full catalogue for the Digiscape Climate Data Portal is [here](https://data-cbr.it.csiro.au/thredds/catalog/catch_all/Digiscape_Climate_Data_Portal/catalog.html).)
 The replica data is located at `/g/data/xv83/agcd-csiro/` on NCI.
 
-## Data transfer
+## Daily data
+
+### Data transfer
 
 The data transfer scripts/commands need to be run from Petrichor.
 
-The transfer of the historical data files was done using the transfer script:
+The transfer of the daily historical data files was done using the transfer script:
 ```
 $ ssh csiro_username@petrichor.hpc.csiro.au
 $ git clone https://github.com/AusClimateService/agcd-csiro.git
@@ -18,7 +20,7 @@ $ cd agcd-csiro
 $ bash transfer_agcd-historical.sh {variable} {nci_username} {nci_password}
 ```
 
-The latest data (updated daily) can be transferred using scp. e.g.
+The latest daily data (updated daily) can be transferred using scp. e.g.
 ```
 $ scp /datasets/work/af-cdp/work/agcd/climate/tmax.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
 ```
@@ -36,3 +38,27 @@ $ git pull origin main
 $ python process_current.py /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc tmax /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20190101-20191231_daily.nc /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20200101-20201231_daily.nc /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20210101-20211231_daily.nc /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20220101-20220402_daily.nc
 $ rm /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
 ```
+
+## Monthly data
+
+There's no historical data included in the commercially licensed AGCD dataset.
+A research-only copy of the monthly historical data (up to mid-2020) is available on NCI in project zv2.
+
+The latest monthly data (from 2020 or late 2019 onwards) is available as part of the commercial dataset
+for precipitation, tmax and tmin (there's no monthly vapour pressure data).
+
+### Data transfer
+
+The data transfer commands need to be run from Petrichor.
+```
+scp /datasets/work/af-cdp/work/agcd/tmax/data/IDCKZX1A90_tmax_mean_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/monthly
+```
+
+### Data processing
+
+The files simply need to be merged using cdo:
+
+```
+cdo mergetime /g/data/xv83/agcd-csiro/tmax/monthly/IDCKZX1A90_tmax_mean_r005_2020*.nc /g/data/xv83/agcd-csiro/tmax/monthly/agcd_v1_tmax_mean_r005_monthly_2020.nc
+```
+
