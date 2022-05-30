@@ -26,6 +26,6 @@ fi
 for year in $(seq ${start_year} 2018); do 
 	echo ${year}
         csirofile=/datasets/work/af-cdp/work/agcd/HISTORICAL/${vardir}/merged/${year}.nc
-	ncifile=/g/data/xv83/agcd-csiro/${variable}/${variable}_AGCD-CSIRO_r005_${year}0101-${year}1231_daily.nc
+	ncifile=/g/data/xv83/agcd-csiro/${variable}/daily/${variable}_AGCD-CSIRO_r005_${year}0101-${year}1231_daily.nc
 	sshpass -p ${nci_password} scp ${csirofile} ${nci_username}@gadi.nci.org.au:${ncifile}
 done
