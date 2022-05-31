@@ -49,16 +49,21 @@ for precipitation, tmax and tmin (there's no monthly vapour pressure data).
 
 ### Data transfer
 
-The data transfer commands need to be run from Petrichor.
+The data transfer commands need to be run from Petrichor:
 ```
 scp /datasets/work/af-cdp/work/agcd/tmax/data/IDCKZX1A90_tmax_mean_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/monthly
+scp /datasets/work/af-cdp/work/agcd/tmin/data/IDCKZN1A90_tmin_mean_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmin/monthly
+scp /datasets/work/af-cdp/work/agcd/precip/data/IDCK2R1AT0_precip_total_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/precip/monthly
 ```
+
+For the precipitation data it looks like `IDCK2R1AT0` is v2 and `IDCKZR1AT0` is v1,
+although when comparing against the data in zv2 the values aren't exactly the same.
+(See `precip_comparison.ipynb` for details.)
 
 ### Data processing
 
-The files simply need to be merged using cdo:
-
+The files then simply need to be merged using cdo. For example:
 ```
-cdo mergetime /g/data/xv83/agcd-csiro/tmax/monthly/IDCKZX1A90_tmax_mean_r005_2020*.nc /g/data/xv83/agcd-csiro/tmax/monthly/agcd_v1_tmax_mean_r005_monthly_2020.nc
+cdo mergetime /g/data/xv83/agcd-csiro/tmax/monthly/IDCKZX1A90_tmax_mean_r005_2021*.nc /g/data/xv83/agcd-csiro/tmax/monthly/agcd_v1_tmax_mean_r005_monthly_2021.nc
 ```
 
