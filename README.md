@@ -39,6 +39,12 @@ $ python process_current.py /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r
 $ rm /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
 ```
 
+### Rechunking
+
+```
+$ python rechunk_by-time_to_by-space.py /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_*_daily.nc tmax /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_19100101-20220402_daily_time-chunked.zarr /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_19100101-20220402_daily_space-chunked.zarr /g/data/xv83/agcd-csiro/tmax/daily/temporary.zarr
+```
+
 ## Monthly data
 
 There's no historical data included in the commercially licensed AGCD dataset.
