@@ -45,6 +45,7 @@ def main(args):
 
     logging.info('Writing the temporal chunked collection...')
     ds.to_zarr(args.temporal_chunked_collection)
+    zarr.consolidate_metadata(args.temporal_chunked_collection)
 
     source_group = zarr.open(args.temporal_chunked_collection)
     target_chunks_dict = define_target_chunks(ds, args.var)
@@ -58,6 +59,7 @@ def main(args):
     )
     logging.info('Writing the spatial chunked collection...')
     group_plan.execute()
+    zarr.consolidate_metadata(args.spatial_chunked_collection)
 
     clean_up_command = f'rm -r {args.temp_collection}'
     logging.info(clean_up_command)
