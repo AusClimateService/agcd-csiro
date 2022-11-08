@@ -22,7 +22,7 @@ $ bash transfer_agcd-historical.sh {variable} {nci_username} {nci_password}
 
 The latest daily data (updated daily) can be transferred using scp. e.g.
 ```
-$ scp /datasets/work/af-cdp/work/agcd/climate/tmax.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
+$ scp /datasets/work/af-cdp/work/agcd/climate/tmax.nc username@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO_r005_20180209-20220402_daily.nc
 ```
 
 ### Data processing
@@ -57,9 +57,9 @@ for precipitation, tmax and tmin (there's no monthly vapour pressure data).
 
 The data transfer commands need to be run from Petrichor:
 ```
-scp /datasets/work/af-cdp/work/agcd/tmax/data/IDCKZX1A90_tmax_mean_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/monthly
-scp /datasets/work/af-cdp/work/agcd/tmin/data/IDCKZN1A90_tmin_mean_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmin/monthly
-scp /datasets/work/af-cdp/work/agcd/precip/data/IDCK2R1AT0_precip_total_r005_*.nc dbi599@gadi.nci.org.au:/g/data/xv83/agcd-csiro/precip/monthly
+scp /datasets/work/af-cdp/work/agcd/tmax/data/IDCKZX1A90_tmax_mean_r005_*.nc username@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmax/monthly
+scp /datasets/work/af-cdp/work/agcd/tmin/data/IDCKZN1A90_tmin_mean_r005_*.nc username@gadi.nci.org.au:/g/data/xv83/agcd-csiro/tmin/monthly
+scp /datasets/work/af-cdp/work/agcd/precip/data/IDCK2R1AT0_precip_total_r005_*.nc username@gadi.nci.org.au:/g/data/xv83/agcd-csiro/precip/monthly
 ```
 
 For the precipitation data it looks like `IDCK2R1AT0` is v2 and `IDCKZR1AT0` is v1,
