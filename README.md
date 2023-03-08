@@ -48,7 +48,8 @@ $ python to_rechunked_zarr.py /g/data/xv83/agcd-csiro/tmax/daily/tmax_AGCD-CSIRO
 ## Monthly data
 
 There's no historical data included in the commercially licensed AGCD dataset.
-A research-only copy of the monthly historical data (up to mid-2020) is available on NCI in project zv2.
+A research-only copy of the monthly historical data (up to mid-2020) is available on NCI in project zv2
+(`/g/data/zv2/agcd/v2/precip/total/r005/01month`).
 
 The latest monthly data (from 2020 or late 2019 onwards) is available as part of the commercial dataset
 for precipitation, tmax and tmin (there's no monthly vapour pressure data).
