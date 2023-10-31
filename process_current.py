@@ -46,8 +46,11 @@ def main(args):
     """Run the command line program."""
 
     in_ds = xr.open_dataset(args.infile)
-    in_ds['lat'].attrs['standard_name'] = 'latitude'
-    in_ds['lon'].attrs['standard_name'] = 'longitude'
+    try:
+        in_ds['lat'].attrs['standard_name'] = 'latitude'
+        in_ds['lon'].attrs['standard_name'] = 'longitude'
+    except KeyError:
+        pass
     try:
         in_ds = in_ds.drop('crs')
     except ValueError:

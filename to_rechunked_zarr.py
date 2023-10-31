@@ -18,9 +18,11 @@ logging.basicConfig(level=logging.INFO)
 def define_target_chunks(ds, var):
     """Create a target chunks dictionary."""
 
-    target_chunks_dict = {
-        var: {'time': len(ds['time']), 'lat': 10, 'lon': 10},
-    }
+    if 'latitude' in ds[var].dims:
+        chunks = {'time': len(ds['time']), 'latitude': 10, 'longitude': 10}
+    else:
+        chunks = {'time': len(ds['time']), 'lat': 10, 'lon': 10}
+    target_chunks_dict = {var: chunks}
     variables = list(ds.keys())
     variables.remove(var)
     coords = list(ds.coords.keys())
