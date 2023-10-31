@@ -17,7 +17,7 @@ The transfer of the daily historical data files was done using the transfer scri
 $ ssh csiro_username@petrichor.hpc.csiro.au
 $ git clone https://github.com/AusClimateService/agcd-csiro.git
 $ cd agcd-csiro
-$ bash transfer_agcd-historical.sh {variable} {nci_username} {nci_password}
+$ bash transfer_agcd-historical_daily.sh {variable} {nci_username} {nci_password}
 ```
 
 The latest daily data (updated daily) can be transferred using scp. e.g.
