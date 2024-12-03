@@ -2,8 +2,17 @@
 
 This repository contains scripts for creating a replica of CSIRO's commercially licensed version of the AGCD dataset on NCI.
 
-The commercially licensed AGCD dataset is located at `/datasets/work/af-cdp/work/agcd/` on Petrichor.
+The commercially licensed AGCD dataset is located at `/datasets/work/af-cdp/work/agcd/` on CSIRO's high performance computing cluster called Petrichor.
 (The full catalogue for the Digiscape Climate Data Portal is [here](https://data-cbr.it.csiro.au/thredds/catalog/catch_all/Digiscape_Climate_Data_Portal/catalog.html).)
+
+The AGCD data that CSIRO purchases comes from the Bureau of Meteorology (BoM) FTP server feed.
+Any retrospective adjustments made to the AGCD dataset by the BoM have not been picked up in CSIRO's version since 2018.
+It is not clear what the relationship is between the FTP data available for purchase from the BoM
+and the research-only snapshots of the AGCD dataset that the BoM makes available on NCI
+(see https://dx.doi.org/10.25914/6009600304b02).
+As far as we are aware there is no formal citation for the FTP data,
+as this [BoM catalogue page](http://www.bom.gov.au/metadata/catalogue/19115/ANZCW0503900567) lists a broken DOI.
+
 The replica data is located at `/g/data/xv83/agcd-csiro/` on NCI.
 
 ## Daily data
