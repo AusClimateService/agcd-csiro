@@ -13,7 +13,8 @@ and the research-only snapshots of the AGCD dataset that the BoM makes available
 Basic analysis performed by CSIRO scientists indicates that there are minor but not major
 differences between the purchased FTP data and the research-only snapshots on NCI.
 As far as we are aware there is no formal citation for the FTP data.
-This [BoM catalogue page](http://www.bom.gov.au/metadata/catalogue/19115/ANZCW0503900567) lists a broken DOI.
+This [BoM catalogue page](http://www.bom.gov.au/metadata/catalogue/19115/ANZCW0503900567) lists a broken DOI
+and refers to a CC-BY-NC licence (i.e. non-commercial, which is technically not what CSIRO has purchased).
 
 The replica data is located at `/g/data/xv83/agcd-csiro/` on NCI.
 
