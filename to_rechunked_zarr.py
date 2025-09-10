@@ -37,17 +37,15 @@ def main(args):
 
     ds = xr.open_mfdataset(args.infiles)
     ds = ds.chunk({'time': 365})
-    assert not os.path.isdir(args.temporal_chunked_collection), \
-        f"You need to delete existing zarr collection: {args.temporal_chunked_collection}"
-    ds.attrs['history'] = cmdprov.new_log(
-        infile_logs={args.infiles[0]: ds.attrs['history']}
-    )
-    for var in ds.variables:
-        ds[var].encoding = {}
-
-    logging.info('Writing the temporal chunked collection...')
-    ds.to_zarr(args.temporal_chunked_collection)
-    zarr.consolidate_metadata(args.temporal_chunked_collection)
+    if not os.path.isdir(args.temporal_chunked_collection):
+        ds.attrs['history'] = cmdprov.new_log(
+            infile_logs={args.infiles[0]: ds.attrs['history']}
+        )
+        for var in ds.variables:
+            ds[var].encoding = {}
+        logging.info('Writing the temporal chunked collection...')
+        ds.to_zarr(args.temporal_chunked_collection)
+        zarr.consolidate_metadata(args.temporal_chunked_collection)
 
     source_group = zarr.open(args.temporal_chunked_collection)
     target_chunks_dict = define_target_chunks(ds, args.var)
